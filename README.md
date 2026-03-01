@@ -7,7 +7,7 @@
           |_|               |_|
 ```
 
-# OpenThread Border Router for Waveshare ESP32-P4-WIFI6-POE-ETH]
+# OpenThread Border Router for Waveshare ESP32-P4-WIFI6-POE-ETH
 
 Instructions for configuring and compiling esp-idf and esp-thread-br for a [Waveshare ESP32-P4-WIFI6-POE-ETH](https://www.waveshare.com/esp32-p4-wifi6-poe-eth.htm). The board will be connected to the LAN via ethernet and acts as a router between the LAN and devices on the Thread radio network.
 
