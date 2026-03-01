@@ -21,7 +21,7 @@ In order to enable the on-board ESP32-C6 as an RCP for the ESP32-P4 you must con
 | GPIO5  | 2 (RX)     |
 | GPIO4  | 1 (TX)     |
 
-One more connection is needed for the esp-thread-br code configuration, the "reset" pin in the configuration (GPIO8), but luckily Waveshare has pre-wired this to ESP32-P4's GPIO54 (once again, see the schematic).
+One more connection is needed for the esp-thread-br code configuration, the "EN" pin on the ESP32-C6, but luckily Waveshare has pre-wired this to ESP32-P4's GPIO54 (once again, see the schematic).
 
 <img src="./assets/ESP32-P4-WIFI6-POE-ETH-details-inter.jpg" alt="ESP32-P4-WIFI6-POE-ETH GPIO" width="400">
 <img src="./assets/ESP32-P4-WIFI6-POE-ETH-details-intro.jpg" alt="ESP32-P4-WIFI6-POE-ETH connection" width="400">
@@ -31,7 +31,7 @@ One more connection is needed for the esp-thread-br code configuration, the "res
 
 Espressif has provided a very nice, functional codebase for an OpenThread Border Router. Start at the [esp-thread-br](https://github.com/espressif/esp-thread-br) codebase, using a release tag (not main) and navigating to the basic_thread_border_router in the example directory.
 
-The latest release is currently v1.3, so I followed the installation [instructions for that version](github.com/espressif/esp-thread-br/releases/tag/v1.3).
+The latest release is currently v1.3, so I followed the installation [instructions for that version](https://github.com/espressif/esp-thread-br/releases/tag/v1.3).
 
 First up is getting esp-idf toolchain installed. I'm used to platformio and esphome's nice abstraction of these installation details, so getting down to the bare bones was a bit rough.
 I followed these instructions: [https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32p4/get-started/linux-macos-setup.html](https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32p4/get-started/linux-macos-setup.html), summarized below.
