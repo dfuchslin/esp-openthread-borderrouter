@@ -1,0 +1,5 @@
+.idea
+.DS_Store
+
+esp-idf
+esp-thread-br
