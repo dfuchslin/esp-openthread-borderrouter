@@ -13,7 +13,7 @@ Instructions for configuring and compiling esp-idf and esp-thread-br for a [Wave
 
 ## Hardware configuration
 
-In order to enable the on-board ESP32-C6 as an RCP for the ESP32-P4 you must connect three GPIO pins to three pins on the ESP32-C6 UART pads ([header H7 in the schematic](https://files.waveshare.com/wiki/ESP32-P4-WIFI6-POE-ETH/ESP32-P4-WIFI6-POE-ETH-Schematic.pdf)).
+In order to enable the on-board ESP32-C6 as a radio co-processor (RCP) for the ESP32-P4 you must connect three GPIO pins to three pins on the ESP32-C6 UART pads ([header H7 in the schematic](https://files.waveshare.com/wiki/ESP32-P4-WIFI6-POE-ETH/ESP32-P4-WIFI6-POE-ETH-Schematic.pdf)). Waveshare has hardwired the P4 and C6 together with the "SDIO interface protocol", which according to all my digging (and many hours of frustration) is not compatible with the esp RCP connection requirements. Luckily, we can actually connect the C6 to the P4 as an RCP as Waveshare has made the required connections to us.
 
 | ESP32-P4   | ESP32-C6          |
 |------------|-------------------|
