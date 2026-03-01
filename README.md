@@ -15,13 +15,16 @@ Instructions for configuring and compiling esp-idf and esp-thread-br for a [Wave
 
 In order to enable the on-board ESP32-C6 as an RCP for the ESP32-P4 you must connect three GPIO pins to three pins on the ESP32-C6 UART pads ([header H7 in the schematic](https://files.waveshare.com/wiki/ESP32-P4-WIFI6-POE-ETH/ESP32-P4-WIFI6-POE-ETH-Schematic.pdf)).
 
-| GPIO   | Header H7  |
-|--------|------------|
-| GPIO8  | 4 (IO9)    |
-| GPIO5  | 2 (RX)     |
-| GPIO4  | 1 (TX)     |
+| ESP32-P4   | ESP32-C6          |
+|------------|-------------------|
+| GPIO8      | IO9 (Header H7 4) |
+| GPIO5      | RX (Header H7 2)  |
+| GPIO4      | TX (Header H7 1)  |
+| GPIO54     | EN                |
 
-One more connection is needed for the esp-thread-br code configuration, the "EN" pin on the ESP32-C6, but luckily Waveshare has pre-wired this to ESP32-P4's GPIO54 (once again, see the schematic).
+For the ESP32-C6 'EN' pin, Waveshare has thankfully hardwired this to ESP32-P4's GPIO54 (once again, see the schematic).
+
+I've created a configuration override for the above mapping in [`sdkconfig.custom`](./sdkconfig.custom).
 
 <img src="./assets/ESP32-P4-WIFI6-POE-ETH-details-inter.jpg" alt="ESP32-P4-WIFI6-POE-ETH GPIO" width="400">
 <img src="./assets/ESP32-P4-WIFI6-POE-ETH-details-intro.jpg" alt="ESP32-P4-WIFI6-POE-ETH connection" width="400">
