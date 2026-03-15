@@ -26,9 +26,19 @@ For the ESP32-C6 'EN' pin, Waveshare has hardwired this to ESP32-P4's GPIO54 (on
 
 I've created a configuration override for the above mapping in [`sdkconfig.custom`](./sdkconfig.custom).
 
+## Note that newer boards might have swapped GPIO headers, check the board revision number!**
+I bought a second board, Rev 2.0 apparently, and the GPIO headers have a colored background and are swapped! (I received the board before Waveshare's website has been updated... quite fun trying to figure out why the second board didn't work as expected!)
+
+### Rev 1.0 board
 <img src="./assets/ESP32-P4-WIFI6-POE-ETH-details-inter.jpg" alt="ESP32-P4-WIFI6-POE-ETH GPIO" width="400">
 <img src="./assets/ESP32-P4-WIFI6-POE-ETH-details-intro.jpg" alt="ESP32-P4-WIFI6-POE-ETH connection" width="400">
 <img src="./assets/ESP32-P4-WIFI6-POE-ETH-wired.jpg" alt="ESP32-P4-WIFI6-POE-ETH wired" width="400">
+
+### Rev 2.0 board
+
+<img src="./assets/ESP32-P4-WIFI6-POE-ETH-rev2-details-inter.jpg" alt="ESP32-P4-WIFI6-POE-ETH rev 2.0 GPIO" width="400">
+<img src="./assets/ESP32-P4-WIFI6-POE-ETH-rev2-details-intro.jpg" alt="ESP32-P4-WIFI6-POE-ETH rev 2.0 connection" width="400">
+<img src="./assets/ESP32-P4-WIFI6-POE-ETH-rev2-wired.jpg" alt="ESP32-P4-WIFI6-POE-ETH rev 2.0 wired" width="400">
 
 ## Software configuration
 
@@ -40,17 +50,19 @@ First up is getting esp-idf toolchain installed. I'm used to platformio and esph
 I followed these instructions: [https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32p4/get-started/linux-macos-setup.html](https://docs.espressif.com/projects/esp-idf/en/v5.5.2/esp32p4/get-started/linux-macos-setup.html), summarized below.
 
 ```
+brew install cmake ninja dfu-util python3
+
 # <root_dir> is this directory
 cd <root_dir>
 
 git clone -b v5.5.2 --recursive https://github.com/espressif/esp-idf.git
-brew install cmake ninja dfu-util python3
 cd esp-idf
-./install.sh esp32p4
+git submodule update --init --depth 1
+./install.sh
 . ./export.sh
 
 # the border router code requires a pre-built module from this codebase: `ot_rcp`
-cd esp-idf/examples/openthread/ot_rcp
+cd $IDF_PATH/examples/openthread/ot_rcp
 idf.py set-target esp32c6
 idf.py build
 ```
@@ -87,6 +99,7 @@ You can access the OpenThread web interface at [http://esp-ot-br.local](http://e
 
 - [esp-idf](https://github.com/espressif/esp-idf)
 - [esp-thread-br](https://github.com/espressif/esp-thread-br)
-- [esp32-p4-wifi6-poe-eth](https://www.waveshare.com/esp32-p4-wifi6-poe-eth.htm)
+- [ESP32-P4-WIFI6-POE-ETH](https://www.waveshare.com/esp32-p4-wifi6-poe-eth.htm)
+- [ESP32-P4-WIFI6-POE-ETH wiki](https://www.waveshare.com/wiki/ESP32-P4-WIFI6-POE-ETH)
 - [ESP32-P4-WIFI6-POE-ETH schematic](https://files.waveshare.com/wiki/ESP32-P4-WIFI6-POE-ETH/ESP32-P4-WIFI6-POE-ETH-Schematic.pdf)
 - [ESP32-P4-WIFI6-POE-ETH schematic, offline](./assets/ESP32-P4-WIFI6-POE-ETH-Schematic.pdf)
