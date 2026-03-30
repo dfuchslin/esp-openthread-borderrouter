@@ -15,12 +15,12 @@ Instructions for configuring and compiling esp-idf and esp-thread-br for a [Wave
 
 To enable the on-board ESP32-C6 as a radio co-processor (RCP) for the ESP32-P4 you must connect three GPIO pins to three pins on the ESP32-C6 UART pads ([header H7 in the schematic](https://files.waveshare.com/wiki/ESP32-P4-WIFI6-POE-ETH/ESP32-P4-WIFI6-POE-ETH-Schematic.pdf)). Waveshare has hardwired the P4 and C6 together with the "SDIO interface protocol", which according to all my digging (and many hours of frustration) is not compatible with the esp RCP connection requirements. Luckily, we can actually connect the C6 to the P4 as an RCP as Waveshare has made the required connections available to us via headers.
 
-| ESP32-P4   | ESP32-C6          |
-|------------|-------------------|
-| GPIO8      | IO9 (Header H7 4) |
-| GPIO5      | RX (Header H7 2)  |
-| GPIO4      | TX (Header H7 1)  |
-| GPIO54     | EN                |
+| ESP32-P4 | ESP32-C6          |
+| -------- | ----------------- |
+| GPIO8    | IO9 (Header H7 4) |
+| GPIO5    | RX (Header H7 2)  |
+| GPIO4    | TX (Header H7 1)  |
+| GPIO54   | EN                |
 
 For the ESP32-C6 'EN' pin, Waveshare has hardwired this to ESP32-P4's GPIO54 (once again, see the schematic).
 
@@ -102,4 +102,3 @@ You can access the OpenThread web interface at [http://esp-ot-br.local](http://e
 - [ESP32-P4-WIFI6-POE-ETH](https://www.waveshare.com/esp32-p4-wifi6-poe-eth.htm)
 - [ESP32-P4-WIFI6-POE-ETH wiki](https://www.waveshare.com/wiki/ESP32-P4-WIFI6-POE-ETH)
 - [ESP32-P4-WIFI6-POE-ETH schematic](https://files.waveshare.com/wiki/ESP32-P4-WIFI6-POE-ETH/ESP32-P4-WIFI6-POE-ETH-Schematic.pdf)
-- [ESP32-P4-WIFI6-POE-ETH schematic, offline](./assets/ESP32-P4-WIFI6-POE-ETH-Schematic.pdf)
